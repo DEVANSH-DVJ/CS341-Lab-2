@@ -108,3 +108,10 @@ main:
   lw $s0, 0($sp)
   lw $s1, 4($sp)
   addi $sp, $sp, 8
+
+  # res = (x % m + m) % m;
+  div $t0, $s1
+  mfhi $t1
+  add $t1, $t1, $s1
+  div $t1, $s1
+  mfhi $s2
