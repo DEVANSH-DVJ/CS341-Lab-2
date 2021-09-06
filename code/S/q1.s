@@ -27,13 +27,17 @@ newline:
 # $v0 -> output
 
 comb:
+  # if (n == r) goto L1;
   beq $a0, $a1, L1
+
+  # if (r == 0) goto L1;
   beq $a1, $zero, L1
 
   # if (n < r) goto L2;
-  slt $t0 $a0 $a1 # t0 is 1 if n < r
-  bnez $t0 L2 # goto L2 if t0 is 1
+  slt $t0, $a0, $a1 # t0 is 1 if n < r
+  bnez $t0, L2 # goto L2 if t0 is 1
 
+  # res1 = comb(n - 1, r - 1);
   addi $sp, $sp, -12
   sw $ra, 0($sp)
   sw $a0, 4($sp)
@@ -49,6 +53,7 @@ comb:
   lw $a1, 8($sp)
   addi $sp, $sp, 12
 
+  # res2 = comb(n - 1, r);
   addi $sp, $sp, -16
   sw $ra, 0($sp)
   sw $a0, 4($sp)
@@ -66,14 +71,17 @@ comb:
   lw $s0, 12($sp)
   addi $sp, $sp, 16
 
+  # return res1 + res2;
   add $v0, $s0, $s1
   jr $ra
 
 L1:
+  # return 1;
   addi $v0, $zero, 1
   jr $ra
 
 L2:
+  # return 0;
   addi $v0, $zero, 0
   jr $ra
 
