@@ -33,6 +33,23 @@ newline:
 inv:
   beq $a0, $zero, L1
 
+  addi $sp, $sp, -12
+  sw $ra, 0($sp)
+  sw $a0, 4($sp)
+  sw $a1, 8($sp)
+
+  move $t0, $a0
+  divu $a1, $a0
+  mfhi $a0
+  move $a1, $t0
+  jal inv
+  move $s0, $v0
+  move $s1, $v1
+
+  lw $ra, 0($sp)
+  lw $a0, 4($sp)
+  lw $a1, 8($sp)
+  addi $sp, $sp, 12
 L1:
   addi $v0, $zero, 0
   addi $v1, $zero, 1
