@@ -50,6 +50,16 @@ inv:
   lw $a0, 4($sp)
   lw $a1, 8($sp)
   addi $sp, $sp, 12
+
+  div $a1, $a0
+  mflo $t0
+  mul $t1, $t0, $s0
+  sub $v0, $s1, $t1
+
+  move $v1, $s0
+
+  jr $ra
+
 L1:
   addi $v0, $zero, 0
   addi $v1, $zero, 1
