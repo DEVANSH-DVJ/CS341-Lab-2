@@ -30,6 +30,20 @@ newline:
   beq $a0, $a1, L1
   beq $a0, $zero, L1
 
+  addi $sp, $sp, -12
+  sw $ra, 0($sp)
+  sw $a0, 4($sp)
+  sw $a1, 8($sp)
+
+  addi $a0, $a0, -1
+  addi $a1, $a1, -1
+  jal comb
+  move $s0, $v0
+
+  addi $sp, $sp, 12
+  lw $ra, 0($sp)
+  lw $a0, 4($sp)
+  lw $a1, 8($sp)
 L1:
   addi $v0, $zero, 1
   jr $ra
