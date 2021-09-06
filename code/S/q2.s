@@ -65,3 +65,31 @@ L1:
   addi $v1, $zero, 1
   jr $ra
 
+
+# $s0 -> a
+# $s1 -> m
+# $t0 -> x
+# $t1 -> y
+# $s2 -> res
+# $s3 -> c
+
+main:
+  # printf("Enter a: ");
+  li $v0, 4
+  la $a0, enter_a
+  syscall
+
+  # scanf("%i", &n);
+  li $v0, 5
+  syscall
+  move $s0, $v0
+
+  # printf("Enter m: ");
+  li $v0, 4
+  la $a0, enter_m
+  syscall
+
+  # scanf("%i", &m);
+  li $v0, 5
+  syscall
+  move $s1, $v0
