@@ -145,3 +145,20 @@ main:
   li $v0, 4
   la $a0, end_mod
   syscall
+
+  # printf("Wish to continue?: ");
+  li $v0, 4
+  la $a0, prompt_continue
+  syscall
+
+  # scanf("%s", &c);
+  li $v0, 12
+  syscall
+  move $s3, $v0
+  li $v0, 12
+  syscall
+
+  # printf("\n");
+  li $v0, 4
+  la $a0, newline
+  syscall
