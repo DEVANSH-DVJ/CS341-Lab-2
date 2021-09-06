@@ -44,6 +44,23 @@ newline:
   lw $ra, 0($sp)
   lw $a0, 4($sp)
   lw $a1, 8($sp)
+
+  addi $sp, $sp, -16
+  sw $ra, 0($sp)
+  sw $a0, 4($sp)
+  sw $a1, 8($sp)
+  sw $s0, 12($sp)
+
+  addi $a0, $a0, -1
+  addi $a1, $a1, 0
+  jal comb
+  move $s1, $v0
+
+  addi $sp, $sp, -20
+  lw $ra, 0($sp)
+  lw $a0, 4($sp)
+  lw $a1, 8($sp)
+  lw $s0, 12($sp)
 L1:
   addi $v0, $zero, 1
   jr $ra
