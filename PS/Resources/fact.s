@@ -74,3 +74,7 @@ main:
   li $v0, 4
   la $a0, newline
   syscall
+
+  # return 0;
+  li $v0, 10
+  syscall
