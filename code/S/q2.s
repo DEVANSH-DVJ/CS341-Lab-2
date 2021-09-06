@@ -167,3 +167,6 @@ main:
   addi $t0, $zero, 'Y'
   beq $s3, $t0, main
 
+  # return 0;
+  li $v0 10
+  syscall
