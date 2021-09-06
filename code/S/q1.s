@@ -61,6 +61,10 @@ newline:
   lw $a0, 4($sp)
   lw $a1, 8($sp)
   lw $s0, 12($sp)
+
+  addi $v0, $s0, $s1
+  jr $ra
+
 L1:
   addi $v0, $zero, 1
   jr $ra
