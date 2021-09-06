@@ -30,6 +30,10 @@ comb:
   beq $a0, $a1, L1
   beq $a1, $zero, L1
 
+  # if (n < r) goto L2;
+  slt $t0 $a0 $a1 # t0 is 1 if n < r
+  bnez $t0 L2 # goto L2 if t0 is 1
+
   addi $sp, $sp, -12
   sw $ra, 0($sp)
   sw $a0, 4($sp)
@@ -67,6 +71,10 @@ comb:
 
 L1:
   addi $v0, $zero, 1
+  jr $ra
+
+L2:
+  addi $v0, $zero, 0
   jr $ra
 
 
