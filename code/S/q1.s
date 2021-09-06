@@ -6,14 +6,14 @@ enter_n:
 enter_r:
   .asciiz "Enter r: "
 
-continue:
+prompt_continue:
   .asciiz "Wish to continue?: "
 
 printC:
   .asciiz "C"
 
 colon:
-  .ascii ": "
+  .asciiz ": "
 
 newline:
   .asciiz "\n"
