@@ -115,3 +115,33 @@ main:
   add $t1, $t1, $s1
   div $t1, $s1
   mfhi $s2
+
+  # printf("%i", a);
+  li $v0, 1
+  move $a0, $s0
+  syscall
+
+  # printf("*");
+  li $v0, 4
+  la $a0, print_ast
+  syscall
+
+  # printf("%i", x);
+  li $v0, 1
+  move $a0, $s2
+  syscall
+
+  # printf(" = 1 (mod ");
+  li $v0, 4
+  la $a0, print_mod
+  syscall
+
+  # printf("%i", m);
+  li $v0, 1
+  move $a0, $s1
+  syscall
+
+  # printf(")\n");
+  li $v0, 4
+  la $a0, end_mod
+  syscall
