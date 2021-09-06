@@ -38,3 +38,39 @@ else:
 fact_return:
   addi $sp, $sp, 8
   jr $ra
+
+main:
+  # printf("Input an integer x: ");
+  li $v0, 4
+  la $a0, prompt
+  syscall
+
+  # scanf("%i", x);
+  li $v0, 5
+  syscall
+  move $t0, $v0
+
+  # res = factorial(x);
+  move $a0, $t0
+  jal factorial
+  move $t1, $v0
+
+  # printf("%i", x);
+  li $v0, 1
+  move $a0, $t0
+  syscall
+
+  # printf("x! = ");
+  li $v0, 4
+  la $a0, result
+  syscall
+
+  # printf("%i", res);
+  li $v0, 1
+  move $a0, $t1
+  syscall
+
+  # print("\n");
+  li $v0, 4
+  la $a0, newline
+  syscall
