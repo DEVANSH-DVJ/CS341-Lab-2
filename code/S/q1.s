@@ -156,3 +156,8 @@ main:
   li $v0, 4
   la $a0, newline
   syscall
+
+  # if c == 'Y' goto main;
+  addi $t0, $zero, 'Y'
+  beq $s3, $t0, main
+
