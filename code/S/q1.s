@@ -40,10 +40,10 @@ comb:
   jal comb
   move $s0, $v0
 
-  addi $sp, $sp, 12
   lw $ra, 0($sp)
   lw $a0, 4($sp)
   lw $a1, 8($sp)
+  addi $sp, $sp, 12
 
   addi $sp, $sp, -16
   sw $ra, 0($sp)
@@ -56,11 +56,11 @@ comb:
   jal comb
   move $s1, $v0
 
-  addi $sp, $sp, -20
   lw $ra, 0($sp)
   lw $a0, 4($sp)
   lw $a1, 8($sp)
   lw $s0, 12($sp)
+  addi $sp, $sp, 16
 
   addi $v0, $s0, $s1
   jr $ra
