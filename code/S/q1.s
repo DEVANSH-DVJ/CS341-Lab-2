@@ -96,3 +96,46 @@ main:
   syscall
   move $s1, $v0
 
+  # res = comb(n, r);
+  addi $sp, $sp, -8
+  sw $s0, 0($sp)
+  sw $s1, 4($sp)
+
+  move $a0, $s0
+  move $a1, $s1
+  jal comb
+  move $s2, $v0
+
+  lw $s0, 0($sp)
+  lw $s1, 4($sp)
+  addi $sp, $sp, 8
+
+  # printf("%i", n);
+  li $v0, 1
+  move $a0, $s0
+  syscall
+
+  # printf("C");
+  li $v0, 4
+  la $a0, printC
+  syscall
+
+  # printf("%i", r);
+  li $v0, 1
+  move $a0, $s1
+  syscall
+
+  # printf(": ");
+  li $v0, 4
+  la $a0, colon
+  syscall
+
+  # printf("%i", res);
+  li $v0, 1
+  move $a0, $s2
+  syscall
+
+  # printf("\n");
+  li $v0, 4
+  la $a0, newline
+  syscall
