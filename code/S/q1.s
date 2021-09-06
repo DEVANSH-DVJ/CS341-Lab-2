@@ -28,7 +28,7 @@ newline:
 
 comb:
   beq $a0, $a1, L1
-  beq $a0, $zero, L1
+  beq $a1, $zero, L1
 
   addi $sp, $sp, -12
   sw $ra, 0($sp)
