@@ -7,6 +7,9 @@ int comb(int n, int r) {
   if (n == r)
     return 1;
 
+  if (n < r)
+    return 0;
+
   int res1 = comb(n - 1, r - 1);
   int res2 = comb(n - 1, r);
 
