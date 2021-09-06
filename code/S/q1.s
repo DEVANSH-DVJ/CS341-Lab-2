@@ -70,7 +70,29 @@ L1:
   jr $ra
 
 
+# $s0 -> n
+# $s1 -> r
+# $s2 -> res
+# $s3 -> c
+
 main:
-  addi $a0, $zero, 25
-  addi $a1, $zero, 4
-  jal comb
+  # printf("Enter n: ");
+  li $v0, 4
+  la $a0, enter_n
+  syscall
+
+  # scanf("%i", &n);
+  li $v0, 5
+  syscall
+  move $s0, $v0
+
+  # printf("Enter r: ");
+  li $v0, 4
+  la $a0, enter_r
+  syscall
+
+  # scanf("%i", &r);
+  li $v0, 5
+  syscall
+  move $s1, $v0
+
