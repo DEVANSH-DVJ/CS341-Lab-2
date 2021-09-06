@@ -62,7 +62,7 @@ comb:
   lw $s0, 12($sp)
   addi $sp, $sp, 16
 
-  addi $v0, $s0, $s1
+  add $v0, $s0, $s1
   jr $ra
 
 L1:
