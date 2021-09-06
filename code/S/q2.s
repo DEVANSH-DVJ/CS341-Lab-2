@@ -93,3 +93,18 @@ main:
   li $v0, 5
   syscall
   move $s1, $v0
+
+  # x, y = inv(a, m);
+  addi $sp, $sp, -8
+  sw $s0, 0($sp)
+  sw $s1, 4($sp)
+
+  move $a0, $s0
+  move $a1, $s1
+  jal inv
+  move $t0, $v0
+  move $t1, $v1
+
+  lw $s0, 0($sp)
+  lw $s1, 4($sp)
+  addi $sp, $sp, 8
