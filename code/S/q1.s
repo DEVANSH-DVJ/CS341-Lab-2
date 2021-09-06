@@ -26,7 +26,7 @@ newline:
 # $s1 -> res2
 # $v0 -> output
 
-.comb:
+comb:
   beq $a0, $a1, L1
   beq $a0, $zero, L1
 
