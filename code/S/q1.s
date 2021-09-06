@@ -69,3 +69,8 @@ L1:
   addi $v0, $zero, 1
   jr $ra
 
+
+main:
+  addi $a0, $zero, 25
+  addi $a1, $zero, 4
+  jal comb
